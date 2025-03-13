@@ -1,0 +1,29 @@
+@baseUrl = http://localhost:5000
+##################################################
+
+
+################################################## Artists
+GET {{baseUrl}}/Artists
+#####
+GET {{baseUrl}}/Artists/initial?initial=abc
+#####
+
+################################################## Initials
+GET {{baseUrl}}/api/Initials
+#####
+
+################################################## Records
+GET {{baseUrl}}/api/Records?artistId=1
+#####
+
+################################################## RecordTypes
+GET {{baseUrl}}/api/RecordTypes
+#####
+
+################################################## Songs
+GET {{baseUrl}}/api/Songs?recordId=1
+#####
+
+################################################## Values
+GET {{baseUrl}}/Values/Songs
+#####
