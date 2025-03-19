@@ -18,7 +18,9 @@ public class DbService(MusicContext db)
   internal List<char> getAllInitials()
   {
     return db.Artists
-      .Select(x => x.ArtistName[0])
+      .Select(x => x.ArtistName.ToUpper()[0])
+      .ToList()
+      .DistinctBy(x=>x.ToString())
       .ToList();
   }
 
@@ -34,7 +36,7 @@ public class DbService(MusicContext db)
     return db.Artists
       .Select(x => new ArtistDto().CopyFrom(x))
       .ToList()
-      .Where(x => x.ArtistName.StartsWith(initial))
+      .Where(x => x.ArtistName.ToUpper().StartsWith(Char.ToUpper(initial)))
       .ToList();
   }
 

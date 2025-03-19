@@ -20,7 +20,7 @@
       </Grid.ColumnDefinitions>
       <DataGrid Name="dgRecords" SelectionChanged="dgRecords_SelectionChanged"></DataGrid>
       <DataGrid Name="dgSongs" SelectionChanged="dgSongs_SelectionChanged" Grid.Column="1"></DataGrid>
-      <TreeView Name="trvMusic" SelectedItemChanged="trvMusic_SelectedItemChanged" Grid.Row="1"></TreeView>
+      <TreeView Name="trvMusic" SelectedItemChanged="trvMusic_SelectedItemChanged" Grid.Row="1" SelectedValuePath="Tag"></TreeView>
       <StackPanel Name="stkBarChart" Orientation="Horizontal" Grid.Column="1" Grid.Row="1"></StackPanel>
     </Grid>
   </DockPanel>
