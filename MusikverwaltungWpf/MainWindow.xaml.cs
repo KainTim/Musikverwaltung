@@ -141,17 +141,43 @@ public partial class MainWindow : Window
     stkBarChart.Children.Clear();
     foreach (var type in recordTypeDtos)
     {
-      stkBarChart.Children.Add(
-        new ProgressBar()
+      stkBarChart.Children.Add(new StackPanel
+      {
+        Orientation = Orientation.Vertical,
+        Children =
         {
-          Value = records.Count(x => x.RecordTypeId == type.Id),
-          Margin = new Thickness(5),
-          Height = 200,
-          Width = 50,
-          Maximum = records.Count,
-          Minimum = 0,
-          Orientation = Orientation.Vertical
-        });
+          new TextBlock()
+          {
+            Text = records.Count(x => x.RecordTypeId == type.Id).ToString(),
+            TextAlignment = TextAlignment.Center,
+            FontWeight = FontWeights.Bold,
+          },
+          new ProgressBar()
+          {
+            Value = records.Count(x => x.RecordTypeId == type.Id),
+            Margin = new Thickness(5),
+            Height = 150,
+            Width = 75,
+            Maximum = records.Count,
+            Minimum = 0,
+            Orientation = Orientation.Vertical,
+            Foreground = type.Id switch
+            {
+              1=> Brushes.Green,
+              2=> Brushes.Yellow,
+              3=> Brushes.Red,
+              4=> Brushes.Blue, 
+              _=> Brushes.Black, 
+            }
+          },
+          new TextBlock()
+          {
+            Text = type.Descr,
+            TextAlignment = TextAlignment.Center,
+            FontWeight = FontWeights.Bold,
+          },
+        }
+      });
     }
   }
 }

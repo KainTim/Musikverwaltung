@@ -26,9 +26,10 @@ public class DbService(MusicContext db)
 
   internal List<RecordTypeDto> GetAllRecordTypes()
   {
-    return db.RecordTypes
+    return [.. db.RecordTypes
       .Select(x => new RecordTypeDto().CopyFrom(x))
-      .ToList();
+      .ToList()
+      .OrderBy(x => x.Descr)];
   }
 
   internal List<ArtistDto> GetArtistsWithInitial(char initial)
